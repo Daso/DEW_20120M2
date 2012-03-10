@@ -12,7 +12,7 @@
 <% @pets.each do |pet| %>
   <tr>
     <td><%= pet.name %></td>
-    <td><%= pet.person%></td>
+    <td><%= pet.person.name%></td>
     <td><%= link_to 'Show', pet %></td>
     <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
     <td><%= link_to 'Destroy', pet, confirm: 'Are you sure?', method: :delete %></td>

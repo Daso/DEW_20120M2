@@ -1,0 +1,17 @@
+<%= form_for(@book) do |f| %>
+  
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :author %><br />
+    <%= f.collection_select :author_id, Author.all, :id, :name, :prompt => true %>
+  </div>  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
