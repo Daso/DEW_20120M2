@@ -9,6 +9,20 @@
   <%= @book.author.name %>
 </p>
 
+<p>
+  <b>Users:</b>  
+</p>
+
+<table>
+	<% @book.users.each do |user| %>
+		<tr>
+			<td>
+				<%= user.name %>
+			</td>
+		</tr>
+	<% end %>
+	
+</table>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

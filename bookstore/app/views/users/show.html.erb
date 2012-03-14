@@ -5,6 +5,14 @@
   <%= @user.name %>
 </p>
 
+<table>
+	<% @user.books.each do |book| %>
+	<tr>
+		<td><%= book.title %></td>
+	</tr>
+    <% end %>
+</table>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path %>  |
+<%= link_to 'Add Book', add_book_user_path(@user)%>

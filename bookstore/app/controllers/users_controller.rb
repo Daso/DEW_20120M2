@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
-  # GET /users
+  
+def add_book
+   @user = User.find(params[:id])
+end   
+
+
+ # GET /users
   # GET /users.json
   def index
     @users = User.all
@@ -7,6 +13,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
+	  format.xml { render xml: @users }
     end
   end
 

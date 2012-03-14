@@ -1,0 +1,7 @@
+<h2>Hola, <%= @user.name %></h2>
+
+<%= simple_form_for @user do |f| %>
+<%= f.association :books, :as => "check_boxes" %>
+<%= f.button :submit %>
+
+<% end %>

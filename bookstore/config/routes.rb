@@ -3,7 +3,11 @@ Bookstore::Application.routes.draw do
 
   resources :authors
 
-  resources :users
+  resources :users do
+  member do
+    get "add_book"
+  end
+end
 
   resources :books
 
