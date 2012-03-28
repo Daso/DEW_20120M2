@@ -1,5 +1,6 @@
 DEWChat::Application.routes.draw do
   resources :messages
+  match "/messages/:from" => "messages#index"
   root :to => "messages#index"
   
   # The priority is based upon order of creation:

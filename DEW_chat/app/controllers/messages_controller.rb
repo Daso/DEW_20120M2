@@ -2,7 +2,11 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
+  if params[:from]
+	@messages = Message.where(:name => params[:from])
+  else	
     @messages = Message.all
+  end 	 
 	@message = Message.new
 	
     respond_to do |format|
@@ -45,7 +49,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to message_path(@message), notice: 'Mensaje creado.' }
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }
