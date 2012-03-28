@@ -15,7 +15,7 @@
 
 <br />
 
-<%= form_for(@message) do |f| %>
+<%= form_for(Message.new, :remote => true) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -28,4 +28,29 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+
+	Pusher.log = function(message) {
+  if (window.console && window.console.log) window.console.log(message);
+};
+	WEB_SOCKET_DEBUG = true;
+	
+	var pusher = new Pusher('d9a06adcf44a4cc3ed78');
+	var channel = pusher.subscribe('DEWChat');
+	
+	channel.bind('message:create',function(data){
+		var message = "<li id='message_"+ data.id + "'>"
+			message += data.name + ": " + data.content
+			message += "</li>"
+			
+			$("#chat_container").append(message);
+			$("#message_content").val("");
+			$("#message_content").focus();
+	});
+
+</script>
+
+
+
 
